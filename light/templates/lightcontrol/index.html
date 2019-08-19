@@ -1,0 +1,45 @@
+
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+<title>Light control</title>
+</head>
+<body>
+<script>
+	window.onload=function(){
+	var socket = new WebSocket("ws://"+window.location.host+window.location.pathname);
+	console.log("socket created");
+	document.querySelector("#ON").addEventListener('click', function(){
+	socket.send("ON");
+	})
+	document.querySelector("#OFF").addEventListener('click',function(){
+	socket.send("OFF");
+	})
+}
+</script>
+<div class="container">
+<div class="container jumbotron">
+<h1>Light control test</h1>
+</div>
+<div class="row">
+<div class="col-sm container">
+<div class="jumbotron">
+<em>Light 1</em>
+</div>
+</div>
+<div class="col-sm container">
+<div class="jumbotron">
+<button class="btn btn-success" type="radio" name="switch" id="ON">ON</input>
+</div>
+</div>
+<div class="col-sm container">
+<div class="jumbotron">
+<button class="btn btn-danger" type="radio" name="switch" id="OFF">OFF</input>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>
